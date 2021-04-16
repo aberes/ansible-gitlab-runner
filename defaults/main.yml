@@ -29,6 +29,11 @@ gitlab_runner_sentry_dsn: ''
 # Prometheus Metrics & Monitoring
 gitlab_runner_listen_address: ''
 
+# Session server configuration
+gitlab_runner_session_server_listen_address: ''
+gitlab_runner_session_server_advertise_address: ''
+gitlab_runner_session_server_session_timeout: 1800
+
 # Skip the APT or YUM repository installation
 # You should provide a repository containing the needed packages before running this role.
 # Use this if you use a mirror repository
@@ -44,7 +49,10 @@ gitlab_runner_windows_service_password: ''
 gitlab_runner_container_install: false
 
 # default state to restart
-gitlab_runner_restart_state: "restarted"
+gitlab_runner_restart_state: restarted
+
+# default value for log_format
+# gitlab_runner_log_format: runner
 
 # A list of runners to register and configure
 gitlab_runner_runners:
@@ -99,6 +107,19 @@ gitlab_runner_runners:
     #
     # Runner SSH identity file
     # ssh_identity_file: ''
+    #
+    # Virtualbox executor configuration params
+    # Base VM name (Required for runner registration!)
+    # virtualbox_base_name: "MyPerfectVMForGitlabVirtualboxExecutor"
+    #
+    # Base VM snapshot name
+    # virtualbox_base_snapshot: ""
+    #
+    # Base VM base folder
+    # virtualbox_base_folder: ""
+    #
+    # Not use VM snapshots for agent launch(false==Use snapshots, true==Do not use snapshots)
+    # virtualbox_disable_snapshots: false
     #
     # Cache type
     # cache_type: 's3|gcs'
